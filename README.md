@@ -12,8 +12,9 @@ For Python---->C:\Users\----\AppData\Local\Programs\Python\Python35
 For PIP---->C:\Users\----\AppData\Local\Programs\Python\Python35\Scripts
 
 Open CMD and Run command below
+``` CMD
 pip3 install --upgrade tensorflow
-
+```
 This will take a while to install tensor flow.
 
 
@@ -21,11 +22,11 @@ This will take a while to install tensor flow.
 
 Run Below small program to check everything works. Open CMS and Type "python".
 It will open python cmp. And run below script.
-
->>> import tensorflow as tf
->>> hello = tf.constant('Hello, TensorFlow!')
->>> sess = tf.Session()
->>> print(sess.run(hello))
-
+``` Python
+import tensorflow as tf
+hello = tf.constant('Hello, TensorFlow!')
+sess = tf.Session()
+print(sess.run(hello))
+```
 
 
