@@ -8,6 +8,10 @@ Download Python 64-bit of 3.5.x or 3.6.x (As of now (1st march 2018) Tensor flow
 Set Environment Path <br/>
 Couple of paths below.<br/>
 
+Install Curl
+https://curl.haxx.se/windows/
+
+
 For Python---->C:\Users\----\AppData\Local\Programs\Python\Python35   
 For PIP---->C:\Users\----\AppData\Local\Programs\Python\Python35\Scripts
 
@@ -29,8 +33,10 @@ sess = tf.Session()
 print(sess.run(hello))
 ```
 
-
-
+Install tensorflow-hub
+``` CMD
+pip install tensorflow-hub
+```
 
 
 Redirect to TensorFlow Folder:
