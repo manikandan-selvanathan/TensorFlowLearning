@@ -1,0 +1,20 @@
+https://heartbeat.fritz.ai/using-tensorflow-lite-and-ml-kit-to-build-custom-machine-learning-models-for-android-a7e272d3c61e
+
+		
+curl -LO https://github.com/tensorflow/hub/raw/master/examples/image_retraining/retrain.py
+
+curl -LO https://github.com/tensorflow/tensorflow/raw/master/tensorflow/examples/label_image/label_image.py
+
+
+Train
+python -m retrain --bottleneck_dir=bottlenecks --how_many_training_steps=500 --model_dir=models/ --summaries_dir=training_summaries/ --output_graph=C:/Tensorflow/ExampleCode/latest/output/retrained.pb --output_labels=C:/Tensorflow/ExampleCode/latest/output/labels.txt --image_dir=Animals/ --tfhub_module=https://tfhub.dev/google/imagenet/mobilenet_v2_140_224/classification/2
+
+
+python -m tensorflow.python.tools.optimize_for_inference --input=C:/Tensorflow/ExampleCode/latest/output/retrained.pb --output=C:/Tensorflow/ExampleCode/latest/output/optimized_graph.pb --input_names="Mul" --output_names="final_result"
+
+
+Test
+python label_image.py --graph=output/retrained.pb --labels=output/labels.txt --input_layer=Placeholder --output_layer=final_result --image=C:/Tensorflow/ExampleCode/latest/Animals/Cats/33.jpg --input_height=224 --input_width=224
+
+Convert to plite
+tflite_convert --graph_def_file=output/retrained.pb --output_file=output/mobilenet_v2.tflite --input_format=TENSORFLOW_GRAPHDEF --output_format=TFLITE --input_shape=1,224,224,3 --input_array=Placeholder --output_array=final_result --inference_type=FLOAT --input_data_type=FLOAT
